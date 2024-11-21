@@ -1,0 +1,145 @@
+version: 2
+
+sources:
+  - name: localbike_source
+    database: projet-velo-442420 
+    schema: localbike_dataset     
+    tables:
+      - name: customers
+        description: "Table des clients"
+        columns:
+          - name: customer_id
+            description: "Identifiant unique du client"
+            
+          - name: first_name
+            description: "Prénom du client"
+          - name: last_name
+            description: "Nom du client"
+          - name: phone
+            description: "Numéro de téléphone"
+          - name: email
+            description: "Adresse email"
+          - name: street
+            description: "Adresse - rue"
+          - name: city
+            description: "Ville"
+          - name: state
+            description: "État/Région"
+          - name: zip_code
+            description: "Code postal"
+
+      - name: staff
+        description: "Table des employés"
+        columns:
+          - name: staff_id
+            description: "Identifiant unique de l'employé"
+          - name: first_name
+            description: "Prénom de l'employé"
+          - name: last_name
+            description: "Nom de l'employé"
+          - name: email
+            description: "Email de l'employé"
+          - name: phone
+            description: "Téléphone de l'employé"
+          - name: active
+            description: "Statut actif de l'employé"
+          - name: store_id
+            description: "ID du magasin d'affectation"
+          - name: manager_id
+            description: "ID du manager"
+
+      - name: orders
+        description: "Table des commandes"
+        columns:
+          - name: order_id
+            description: "Identifiant unique de la commande"
+          - name: customer_id
+            description: "ID du client"
+          - name: order_status
+            description: "Statut de la commande"
+          - name: order_date
+            description: "Date de la commande"
+          - name: required_date
+            description: "Date requise de livraison"
+          - name: shipped_date
+            description: "Date d'expédition"
+          - name: store_id
+            description: "ID du magasin"
+          - name: staff_id
+            description: "ID de l'employé"
+
+      - name: order_items
+        description: "Table des lignes de commande"
+        columns:
+          - name: order_id
+            description: "ID de la commande"
+          - name: item_id
+            description: "ID de l'article"
+          - name: product_id
+            description: "ID du produit"
+          - name: quantity
+            description: "Quantité commandée"
+          - name: list_price
+            description: "Prix unitaire"
+          - name: discount
+            description: "Remise appliquée"
+
+      - name: products
+        description: "Table des produits"
+        columns:
+          - name: product_id
+            description: "Identifiant unique du produit"
+          - name: product_name
+            description: "Nom du produit"
+          - name: brand_id
+            description: "ID de la marque"
+          - name: category_id
+            description: "ID de la catégorie"
+          - name: model_year
+            description: "Année du modèle"
+          - name: list_price
+            description: "Prix catalogue"
+
+      - name: categories
+        description: "Table des catégories de produits"
+        columns:
+          - name: category_id
+            description: "Identifiant unique de la catégorie"
+          - name: category_name
+            description: "Nom de la catégorie"
+
+      - name: brands
+        description: "Table des marques"
+        columns:
+          - name: brand_id
+            description: "Identifiant unique de la marque"
+          - name: brand_name
+            description: "Nom de la marque"
+
+      - name: stores
+        description: "Table des magasins"
+        columns:
+          - name: store_id
+            description: "Identifiant unique du magasin"
+          - name: store_name
+            description: "Nom du magasin"
+          - name: phone
+            description: "Numéro de téléphone"
+          - name: email
+            description: "Adresse email"
+          - name: city
+            description: "Ville"
+          - name: state
+            description: "État/Région"
+          - name: zip_code
+            description: "Code postal"
+
+      - name: stocks
+        description: "Table des stocks"
+        columns:
+          - name: store_id
+            description: "ID du magasin"
+          - name: product_id
+            description: "ID du produit"
+          - name: quantity
+            description: "Quantité en stock"
