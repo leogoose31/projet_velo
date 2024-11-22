@@ -3,5 +3,7 @@
     persist_docs={"relation": true, "columns": true}
 ) }}
 
-SELECT *
-FROM {{ source('localbike_source', 'customers') }}
+SELECT 
+    category_id,
+    category_name
+FROM {{ source('localbike_source', 'categories') }}

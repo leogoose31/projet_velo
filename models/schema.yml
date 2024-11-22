@@ -10,7 +10,6 @@ sources:
         columns:
           - name: customer_id
             description: "Identifiant unique du client"
-            
           - name: first_name
             description: "Prénom du client"
           - name: last_name
@@ -28,7 +27,7 @@ sources:
           - name: zip_code
             description: "Code postal"
 
-      - name: staff
+      - name: staffs
         description: "Table des employés"
         columns:
           - name: staff_id
@@ -143,3 +142,25 @@ sources:
             description: "ID du produit"
           - name: quantity
             description: "Quantité en stock"
+      
+      - name: stg_customers
+        description: "table des clients"
+        columns:
+          - name: customer_id
+            description: "Identifiant unique du client"
+          - name: first_name
+            description: "Prénom du client"
+          - name: last_name
+            description: "Nom du client"
+          - name: phone
+            description: "Numéro de téléphone"
+          - name: email
+            description: "Adresse email"
+          - name: street
+            description: "Adresse - rue"
+          - name: city
+            description: "Ville"
+          - name: state
+            description: "État/Région"
+          - name: zip_code
+            description: "Code postal"

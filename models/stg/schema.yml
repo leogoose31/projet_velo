@@ -1,0 +1,65 @@
+# models/stg/schema.yml
+version: 2
+
+models:
+  - name: stg_customers
+    description: "Staging table for customers"
+    columns:
+      - name: customer_id
+        description: "Primary key for customers"
+
+
+  - name: stg_orders
+    description: "Staging table for orders"
+    columns:
+      - name: order_id
+        description: "Primary key for orders"
+
+
+  - name: stg_order_items
+    description: "Staging table for order items"
+    columns:
+      - name: order_id
+        description: "Foreign key to orders"
+
+
+  - name: stg_products
+    description: "Staging table for products"
+    columns:
+      - name: product_id
+        description: "Primary key for products"
+
+
+  - name: stg_categories
+    description: "Staging table for categories"
+    columns:
+      - name: category_id
+        description: "Primary key for categories"
+
+
+  - name: stg_brands
+    description: "Staging table for brands"
+    columns:
+      - name: brand_id
+        description: "Primary key for brands"
+
+  - name: stg_stores
+    description: "Staging table for stores"
+    columns:
+      - name: store_id
+        description: "Primary key for stores"
+
+
+  - name: stg_stocks
+    description: "Staging table for stocks"
+    columns:
+      - name: store_id
+        description: "Foreign key to stores"
+
+
+
+  - name: stg_staff
+    description: "Staging table for staff"
+    columns:
+      - name: staff_id
+        description: "Primary key for staff"
