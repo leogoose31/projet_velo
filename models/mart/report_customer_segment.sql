@@ -1,7 +1,7 @@
 SELECT 
     CASE 
-        WHEN total_revenue >= 1000 THEN 'High Value'
-        WHEN total_revenue >= 500 THEN 'Medium Value'
+        WHEN total_revenue >= 3000 THEN 'High Value'
+        WHEN total_revenue >= 1500 THEN 'Medium Value'
         ELSE 'Low Value'
     END as customer_segment,
     COUNT(*) as number_of_customers,
