@@ -21,12 +21,9 @@ models:
   localbike_project:    
     staging:  
       +materialized: view
-      +schema: stg
     
     intermediate: 
       +materialized: view
-      +schema: int
 
     mart: 
       +materialized: table
-      +schema: mart
