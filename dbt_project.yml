@@ -19,14 +19,14 @@ clean-targets:
 # Configuration des modèles
 models:
   localbike_project:    
-    +materialized: view  
-    +persist_docs:
-      relation: true
-      columns: true
-    
-    # Si vous voulez des configurations spécifiques pour le dossier stg
-    stg:
+    staging:  
       +materialized: view
-      +persist_docs:
-        relation: true
-        columns: true
+      +schema: stg
+    
+    intermediate: 
+      +materialized: view
+      +schema: int
+
+    mart: 
+      +materialized: table
+      +schema: mart

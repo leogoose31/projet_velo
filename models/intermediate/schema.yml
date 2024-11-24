@@ -1,0 +1,108 @@
+# models/intermediate/schema.yml
+version: 2
+
+models:
+  - name: int_orders_base
+    description: "Base enrichie des commandes avec calculs monétaires. Une ligne par produit dans chaque commande"
+    columns:
+      - name: order_id
+        description: "Identifiant de la commande - peut apparaître plusieurs fois si plusieurs produits"
+        tests:
+          - not_null
+      - name: order_date
+        description: "Date de la commande"
+        tests:
+          - not_null
+      - name: customer_id
+        description: "Identifiant du client"
+        tests:
+          - not_null
+      - name: store_id
+        description: "Identifiant du magasin"
+        tests:
+          - not_null
+      - name: product_id
+        description: "Identifiant du produit"
+        tests:
+          - not_null
+
+  - name: int_sales_enriched
+    description: "Ventes enrichies avec toutes les dimensions. Une ligne par produit dans chaque commande"
+    columns:
+      - name: order_id
+        description: "Identifiant de la commande"
+        tests:
+          - not_null
+      - name: product_id
+        description: "Identifiant du produit"
+        tests:
+          - not_null
+      - name: product_name
+        description: "Nom du produit"
+      - name: category_name
+        description: "Nom de la catégorie"
+      - name: store_name
+        description: "Nom du magasin"
+      - name: store_state
+        description: "État du magasin"
+      - name: current_stock
+        description: "Stock actuel"
+
+  - name: int_customer_stats
+    description: "Statistiques agrégées par client"
+    columns:
+      - name: customer_id
+        description: "Identifiant unique du client"
+        tests:
+          - unique
+          - not_null
+      - name: number_of_orders
+        description: "Nombre total de commandes"
+      - name: total_units_purchased
+        description: "Nombre total d'unités achetées"
+      - name: total_revenue
+        description: "Revenu total généré"
+      - name: first_order_date
+        description: "Date de première commande"
+      - name: last_order_date
+        description: "Date de dernière commande"
+
+  - name: int_product_stats
+    description: "Statistiques agrégées par produit"
+    columns:
+      - name: product_id
+        description: "Identifiant unique du produit"
+        tests:
+          - unique
+          - not_null
+      - name: product_name
+        description: "Nom du produit"
+      - name: category_name
+        description: "Nom de la catégorie"
+      - name: number_of_orders
+        description: "Nombre de commandes"
+      - name: total_units_sold
+        description: "Nombre total d'unités vendues"
+      - name: total_revenue
+        description: "Revenu total"
+      - name: current_stock
+        description: "Stock actuel"
+
+  - name: int_store_stats
+    description: "Statistiques agrégées par magasin"
+    columns:
+      - name: store_id
+        description: "Identifiant unique du magasin"
+        tests:
+          - unique
+          - not_null
+      - name: store_name
+        description: "Nom du magasin"
+      - name: state
+        description: "État du magasin"
+      - name: number_of_orders
+        description: "Nombre total de commandes"
+      - name: total_revenue
+        description: "Revenu total"
+      - name: number_of_products_sold
+        description: "Nombre de produits différents vendus"
