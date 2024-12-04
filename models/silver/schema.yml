@@ -1,0 +1,70 @@
+version: 2
+
+models:
+  - name: silver_dim_customers
+    description: "Table des clients nettoyée et dédoublonnée."
+    columns:
+      - name: customer_id
+        description: "Identifiant unique du client."
+        tests:
+          - not_null
+          - unique
+      - name: first_name
+        description: "Prénom du client."
+      - name: last_name
+        description: "Nom de famille du client."
+      - name: email
+        description: "Adresse email du client, standardisée en minuscules."
+      - name: city
+        description: "Ville du client."
+
+  - name: silver_dim_products
+    description: "Table des produits enrichie avec catégories et marques."
+    columns:
+      - name: product_id
+        description: "Identifiant unique du produit."
+        tests:
+          - not_null
+          - unique
+      - name: category_id
+        description: "Identifiant de la catégorie associée au produit."
+      - name: brand_id
+        description: "Identifiant de la marque associée au produit."
+      - name: list_price
+        description: "Prix catalogue du produit."
+
+  - name: silver_dim_stores
+    description: "Table des magasins nettoyée."
+    columns:
+      - name: store_id
+        description: "Identifiant unique du magasin."
+        tests:
+          - not_null
+          - unique
+      - name: store_name
+        description: "Nom du magasin."
+
+  - name: silver_fact_orders
+    description: "Table de faits contenant les commandes et les articles associés."
+    columns:
+      - name: order_id
+        description: "Identifiant unique de la commande."
+        tests:
+          - not_null
+      - name: customer_id
+        description: "Identifiant du client ayant passé la commande."
+      - name: store_id
+        description: "Identifiant du magasin où la commande a été passée."
+      - name: total_price
+        description: "Montant total de la commande (incluant les remises)."
+
+  - name: silver_dim_staffs
+    description: "Table du personnel avec informations de base et état d'activité."
+    columns:
+      - name: staff_id
+        description: "Identifiant unique du membre du personnel."
+        tests:
+          - not_null
+          - unique
+      - name: active
+        description: "Indique si le membre du personnel est actif (1) ou non (0)."
