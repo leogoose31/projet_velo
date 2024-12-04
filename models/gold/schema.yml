@@ -1,0 +1,76 @@
+version: 2
+
+models:
+  - name: fact_sales
+    description: "Table de faits principale contenant les ventes consolidées."
+    columns:
+      - name: order_id
+        description: "Identifiant unique de la commande."
+        tests:
+          - not_null
+      - name: customer_id
+        description: "Identifiant unique du client ayant passé la commande."
+      - name: store_id
+        description: "Identifiant unique du magasin où la commande a été passée."
+      - name: product_id
+        description: "Identifiant unique du produit vendu."
+      - name: total_sales
+        description: "Montant total généré par la commande (après remises)."
+        tests:
+          - not_null
+      - name: total_quantity
+        description: "Quantité totale vendue dans la commande."
+      - name: shipping_days
+        description: "Durée (en jours) entre la commande et l'expédition."
+
+  - name: dim_customers
+    description: "Dimension enrichie des clients avec des agrégats basés sur les commandes."
+    columns:
+      - name: customer_id
+        description: "Identifiant unique du client."
+        tests:
+          - not_null
+      - name: total_orders
+        description: "Nombre total de commandes passées par le client."
+        tests:
+          - not_null
+      - name: total_spent
+        description: "Montant total dépensé par le client."
+
+  - name: dim_products
+    description: "Dimension enrichie des produits, incluant la performance des ventes."
+    columns:
+      - name: product_id
+        description: "Identifiant unique du produit."
+        tests:
+          - not_null
+      - name: category_name
+        description: "Nom de la catégorie à laquelle appartient le produit."
+      - name: total_quantity_sold
+        description: "Quantité totale du produit vendue."
+      - name: total_revenue
+        description: "Revenu total généré par le produit."
+
+  - name: dim_stores
+    description: "Dimension enrichie des magasins, avec performance des ventes."
+    columns:
+      - name: store_id
+        description: "Identifiant unique du magasin."
+        tests:
+          - not_null
+      - name: total_revenue
+        description: "Revenu total généré par le magasin."
+
+  - name: dim_dates
+    description: "Dimension temporelle pour l'analyse des performances sur plusieurs périodes."
+    columns:
+      - name: date
+        description: "Date du calendrier."
+        tests:
+          - not_null
+      - name: year
+        description: "Année de la date."
+      - name: month
+        description: "Mois de la date."
+      - name: is_weekend
+        description: "Indique si la date correspond à un week-end ou non."

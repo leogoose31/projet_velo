@@ -22,8 +22,8 @@ models:
     staging:  
       +materialized: view
     
-    intermediate: 
+    silver: 
       +materialized: view
 
-    mart: 
+    gold: 
       +materialized: table
